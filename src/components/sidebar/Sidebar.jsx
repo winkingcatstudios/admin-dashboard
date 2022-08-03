@@ -15,6 +15,7 @@ import {
 } from "@material-ui/icons";
 
 import "./sidebar.css";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
@@ -40,14 +41,18 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <PersonOutline className="sidebarIcon" />
-              Users
-            </li>
+            <Link to="/users" className="link">
+              <li className="sidebarListItem">
+                <PersonOutline className="sidebarIcon" />
+                Users
+              </li>
+            </Link>
+            <Link to="/products" className="link">
             <li className="sidebarListItem">
               <StorefrontOutlined className="sidebarIcon" />
               Products
             </li>
+            </Link>
             <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
               Transactions
@@ -61,7 +66,7 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-          <li className="sidebarListItem">
+            <li className="sidebarListItem">
               <MailOutline className="sidebarIcon" />
               Mail
             </li>
@@ -78,7 +83,7 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
-          <li className="sidebarListItem">
+            <li className="sidebarListItem">
               <WorkOutline className="sidebarIcon" />
               Manage
             </li>

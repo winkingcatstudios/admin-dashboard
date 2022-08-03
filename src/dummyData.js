@@ -141,3 +141,96 @@ export const userRows = [
     transaction: "$120",
   },
 ];
+
+export const productRows = [
+  {
+    id: 1,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 2,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 3,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 4,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 5,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 6,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 7,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 8,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 9,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 10,
+    name: "Apple Airpods",
+    img:
+      "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg",
+    stock: 123,
+    status: "active",
+    price: "$120.00",
+  },
+];
