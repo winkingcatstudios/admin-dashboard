@@ -2,7 +2,7 @@ import React from "react";
 
 import Chart from "../../components/chart/Chart";
 import FeaturedInfo from "../../components/featuredInfo/FeaturedInfo";
-import { userData } from "../../components/dummyData";
+import { userData } from "../../dummyData";
 import "./home.css";
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
