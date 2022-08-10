@@ -11,7 +11,7 @@ import {
   ChatBubbleOutline,
   DynamicFeed,
   MailOutline,
-  StorefrontOutlined,
+  PersonalVideoOutlined,
 } from "@material-ui/icons";
 
 import "./sidebar.css";
@@ -49,10 +49,10 @@ export default function Sidebar() {
                 Users
               </li>
             </Link>
-            <Link to="/products" className="link">
+            <Link to="/videos" className="link">
             <li className="sidebarListItem">
-              <StorefrontOutlined className="sidebarIcon" />
-              Products
+              <PersonalVideoOutlined className="sidebarIcon" />
+              Videos
             </li>
             </Link>
             <li className="sidebarListItem">
