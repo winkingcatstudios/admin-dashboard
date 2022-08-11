@@ -70,12 +70,19 @@ export default function VideoList() {
   ];
 
   return (
+    
     <div className="productList">
+      <div className="productListTitleContainer">
+        <h1 className="productTitle">Video List</h1>
+        <Link to="/newVideo">
+          <button className="productListAddButton">Create New Video</button>
+        </Link>
+      </div>
       <DataGrid
         disableSelectionOnClick
         rows={videos}
         columns={columns}
-        pageSize={8}
+        pageSize={15}
         rowsPerPageOptions={[5]}
         checkboxSelection
       />

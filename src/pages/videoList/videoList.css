@@ -1,5 +1,25 @@
 .productList{
     flex: 4;
+    height: 80vh;
+}
+
+.productListTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.productListAddButton {
+  width: 120px;
+  border: none;
+  padding: 5px;
+  margin-right: 20px;
+  background-color: teal;
+  color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .productListProduct{
