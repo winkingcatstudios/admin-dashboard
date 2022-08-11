@@ -25,9 +25,7 @@ function App() {
 
   let router;
 
-  const user = false;
-
-  if (user) {
+  if (token) {
     router = (
       <Router>
         <Topbar />
@@ -41,6 +39,7 @@ function App() {
             <Route path="/videos" element={<ProductList />}></Route>
             <Route path="/newVideo" element={<NewProduct />}></Route>
             <Route path="/videos/:videosId" element={<Product />}></Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
       </Router>
