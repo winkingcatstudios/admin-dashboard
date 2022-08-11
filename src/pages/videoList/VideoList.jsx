@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { productRows } from "../../dummyData";
 import "./videoList.css";
@@ -10,6 +10,8 @@ import { deleteVideo, getVideos } from "../../context/videoContext/apiCalls";
 
 export default function VideoList() {
   const { videos, dispatch } = useContext(VideoContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getVideos(dispatch);
@@ -45,9 +47,18 @@ export default function VideoList() {
       renderCell: (params) => {
         return (
           <React.Fragment>
-            <Link to={"/videos/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
-            </Link>
+            {/* <Link to={"/videos/" + params.row.id}> */}
+            <button
+              onClick={() =>
+                navigate("/videos/" + params.row.id, {
+                  state: { video: params.row },
+                })
+              }
+              className="productListEdit"
+            >
+              Edit
+            </button>
+            {/* </Link> */}
             <DeleteOutline
               className="productListDelete"
               onClick={() => handleDelete(params.row.id)}

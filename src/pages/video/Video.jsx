@@ -1,17 +1,18 @@
 import { Publish } from "@material-ui/icons";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-import Chart from "../../components/chart/Chart";
-import { productData } from "../../dummyData";
 import "./video.css";
 
 export default function Video() {
+  const location = useLocation();
+  const { video } = location.state;
+
   return (
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Video</h1>
-        <Link to="/newProduct">
+        <Link to="/newVideo">
           <button className="productAddButton">Create</button>
         </Link>
       </div>
@@ -19,28 +20,28 @@ export default function Video() {
         <div className="productTopRight">
           <div className="productInfoTop">
             <img
-              src="https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg"
+              src={video.image}
               alt=""
               className="productInfoImg"
             />
-            <span className="productName">Kermits</span>
+            <span className="productName">{video.title}</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
-              <span className="productInfoKey">id:</span>
-              <span className="productInfoVolume">123</span>
+              <span className="productInfoKey">ID:</span>
+              <span className="productInfoVolume">{video.id}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">sales:</span>
-              <span className="productInfoVolume">5123</span>
+              <span className="productInfoKey">Genre:</span>
+              <span className="productInfoVolume">{video.genre}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">active:</span>
-              <span className="productInfoVolume">yes</span>
+              <span className="productInfoKey">Year:</span>
+              <span className="productInfoVolume">{video.year}</span>
             </div>
             <div className="productInfoItem">
-              <span className="productInfoKey">in stock:</span>
-              <span className="productInfoVolume">no</span>
+              <span className="productInfoKey">Age Limit:</span>
+              <span className="productInfoVolume">{video.ageLimit}</span>
             </div>
           </div>
         </div>
@@ -48,23 +49,23 @@ export default function Video() {
       <div className="productBottom">
         <form className="productForm">
           <div className="productFormLeft">
-            <label>Product Name</label>
-            <input type="text" placeholder="Kermits" />
-            <label>In Stock</label>
-            <select name="inStock" id="inStock">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
-            <label>Active</label>
-            <select name="active" id="active">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
+            <label>Video Title</label>
+            <input type="text" placeholder={video.title} />
+            <label>Genre</label>
+            <input type="text" placeholder={video.genre} />
+            <label>Year</label>
+            <input type="text" placeholder={video.year} />
+            <label>Age Limit</label>
+            <input type="text" placeholder={video.ageLimit} />
+            <label>Trailer</label>
+            <input type="file" placeholder={video.trailerVideo} />
+            <label>Full Video</label>
+            <input type="file" placeholder={video.fullVideo} />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
               <img
-                src="https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg"
+                src={video.image}
                 alt=""
                 className="productUploadImg"
               />
