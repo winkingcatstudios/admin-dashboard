@@ -21,7 +21,6 @@ export default function WidgetSm() {
             },
           }
         );
-        console.log(response.data.users);
         setNewUsers(response.data.users);
       } catch (err) {
         console.log(err);

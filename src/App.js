@@ -13,12 +13,13 @@ import "./app.css";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
-import ProductList from "./pages/productList/ProductList";
-import Product from "./pages/product/Product";
-import NewProduct from "./pages/newProduct/NewProduct";
+import VideoList from "./pages/videoList/VideoList";
+import Video from "./pages/video/Video";
+import NewVideo from "./pages/newVideo/NewVideo";
 import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/auth-hook";
 import { AuthContext } from "./context/auth-context";
+import { VideoContextProvider } from "./context/videoContext/VideoContext";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -36,9 +37,9 @@ function App() {
             <Route path="/users" element={<UserList />}></Route>
             <Route path="/newUser" element={<NewUser />}></Route>
             <Route path="/user/:userId" element={<User />}></Route>
-            <Route path="/videos" element={<ProductList />}></Route>
-            <Route path="/newVideo" element={<NewProduct />}></Route>
-            <Route path="/videos/:videosId" element={<Product />}></Route>
+            <Route path="/videos" element={<VideoList />}></Route>
+            <Route path="/newVideo" element={<NewVideo />}></Route>
+            <Route path="/videos/:videosId" element={<Video />}></Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
@@ -65,7 +66,7 @@ function App() {
         logout: logout,
       }}
     >
-      {router}
+      <VideoContextProvider>{router}</VideoContextProvider>
     </AuthContext.Provider>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./newProduct.css";
+import "./newVideo.css";
 
-export default function NewProduct() {
+export default function NewVideo() {
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New User</h1>
