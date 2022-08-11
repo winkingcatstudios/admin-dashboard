@@ -16,6 +16,9 @@ import NewUser from "./pages/newUser/NewUser";
 import VideoList from "./pages/videoList/VideoList";
 import Video from "./pages/video/Video";
 import NewVideo from "./pages/newVideo/NewVideo";
+import ListList from "./pages/listList/ListList";
+import List from "./pages/list/List";
+import NewList from "./pages/newList/NewList";
 import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/auth-hook";
 import { AuthContext } from "./context/auth-context";
@@ -39,7 +42,10 @@ function App() {
             <Route path="/user/:userId" element={<User />}></Route>
             <Route path="/videos" element={<VideoList />}></Route>
             <Route path="/newVideo" element={<NewVideo />}></Route>
-            <Route path="/videos/:videosId" element={<Video />}></Route>
+            <Route path="/videos/:videoId" element={<Video />}></Route>
+            <Route path="/lists" element={<ListList />}></Route>
+            <Route path="/newList" element={<NewVideo />}></Route>
+            <Route path="/lists/:listId" element={<Video />}></Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>

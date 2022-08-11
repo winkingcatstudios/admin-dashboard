@@ -16,6 +16,9 @@ import {
   GroupOutlined,
   VideoCallOutlined,
   VideoLibraryOutlined,
+  FormatListBulletedOutlined,
+  PlaylistAddOutlined,
+  ListAltOutlined
 } from "@material-ui/icons";
 
 import "./sidebar.css";
@@ -59,11 +62,11 @@ export default function Sidebar() {
                 Videos
               </li>
             </Link>
-            {/* <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
             <li className="sidebarListItem">
+              <FormatListBulletedOutlined className="sidebarIcon" />
+              Lists
+            </li>
+            {/* <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
             </li> */}
@@ -103,6 +106,27 @@ export default function Sidebar() {
               <li className="sidebarListItem">
                 <VideoCallOutlined className="sidebarIcon" />
                 New Video
+              </li>
+            </Link>
+            {/* <li className="sidebarListItem">
+              <Report className="sidebarIcon" />
+              Reports
+            </li> */}
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle">Lists</h3>
+          <ul className="sidebarList">
+            <Link to="/videos" className="link">
+              <li className="sidebarListItem">
+                <ListAltOutlined className="sidebarIcon" />
+                Lists List
+              </li>
+            </Link>
+            <Link to="/newVideo" className="link">
+              <li className="sidebarListItem">
+                <PlaylistAddOutlined className="sidebarIcon" />
+                New List
               </li>
             </Link>
             {/* <li className="sidebarListItem">

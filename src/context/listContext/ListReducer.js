@@ -1,74 +1,74 @@
-const VideoReducer = (state, action) => {
+const ListReducer = (state, action) => {
   switch (action.type) {
-    case "GET_VIDEOS_START":
+    case "GET_LISTS_START":
       return {
-        videos: [],
+        lists: [],
         isFetching: true,
         error: false,
       };
-    case "GET_VIDEOS_SUCCESS":
+    case "GET_LISTS_SUCCESS":
       return {
-        videos: action.payload,
+        lists: action.payload,
         isFetching: false,
         error: false,
       };
-    case "GET_VIDEOS_FAILURE":
+    case "GET_LISTS_FAILURE":
       return {
-        videos: [],
+        lists: [],
         isFetching: false,
         error: true,
       };
-    case "CREATE_VIDEO_START":
+    case "CREATE_LIST_START":
       return {
         ...state,
         isFetching: true,
         error: false,
       };
-    case "CREATE_VIDEO_SUCCESS":
+    case "CREATE_LIST_SUCCESS":
       return {
-        videos: [...state.videos, action.payload],
+        lists: [...state.lists, action.payload],
         isFetching: false,
         error: false,
       };
-    case "CREATE_VIDEO_FAILURE":
+    case "CREATE_LIST_FAILURE":
       return {
         ...state,
         isFetching: false,
         error: true,
       };
-    case "UPDATE_VIDEO_START":
+    case "UPLOAD_LIST_START":
       return {
         ...state,
         isFetching: true,
         error: false,
       };
-    case "UPDATE_VIDEO_SUCCESS":
+    case "UPLOAD_LIST_SUCCESS":
       return {
-        videos: state.videos.map(
-          (video) => video._id === action.payload._id && action.payload
+        lists: state.lists.map(
+          (list) => list._id === action.payload._id && action.payload
         ),
         isFetching: false,
         error: false,
       };
-    case "UPDATE_VIDEO_FAILURE":
+    case "UPLOAD_LIST_FAILURE":
       return {
         ...state,
         isFetching: false,
         error: true,
       };
-    case "DELETE_VIDEO_START":
+    case "DELETE_LIST_START":
       return {
         ...state,
         isFetching: true,
         error: false,
       };
-    case "DELETE_VIDEO_SUCCESS":
+    case "DELETE_LIST_SUCCESS":
       return {
-        videos: state.videos.filter((video) => video._id !== action.payload),
+        lists: state.lists.filter((list) => list._id !== action.payload),
         isFetching: false,
         error: false,
       };
-    case "DELETE_VIDEO_FAILURE":
+    case "DELETE_LIST_FAILURE":
       return {
         ...state,
         isFetching: false,
@@ -79,4 +79,4 @@ const VideoReducer = (state, action) => {
   }
 };
 
-export default VideoReducer;
+export default ListReducer;
