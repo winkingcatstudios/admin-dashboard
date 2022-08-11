@@ -75,7 +75,7 @@ export default function VideoList() {
       <div className="productListTitleContainer">
         <h1 className="productTitle">Video List</h1>
         <Link to="/newVideo">
-          <button className="productListAddButton">Create New Video</button>
+          <button className="productListAddButton">Create Video</button>
         </Link>
       </div>
       <DataGrid

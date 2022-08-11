@@ -13,7 +13,7 @@ export default function Video() {
       <div className="productTitleContainer">
         <h1 className="productTitle">Video</h1>
         <Link to="/newVideo">
-          <button className="productAddButton">Create New Video</button>
+          <button className="productAddButton">Create Video</button>
         </Link>
       </div>
       <div className="productTop">

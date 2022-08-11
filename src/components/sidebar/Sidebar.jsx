@@ -12,6 +12,10 @@ import {
   DynamicFeed,
   MailOutline,
   PersonalVideoOutlined,
+  PersonAddOutlined,
+  GroupOutlined,
+  VideoCallOutlined,
+  VideoLibraryOutlined,
 } from "@material-ui/icons";
 
 import "./sidebar.css";
@@ -25,10 +29,10 @@ export default function Sidebar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <Link to="/" className="link">
-            <li className="sidebarListItem">
-              <LineStyle className="sidebarIcon" />
-              Home
-            </li>
+              <li className="sidebarListItem">
+                <LineStyle className="sidebarIcon" />
+                Home
+              </li>
             </Link>
             {/* <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
@@ -50,10 +54,10 @@ export default function Sidebar() {
               </li>
             </Link>
             <Link to="/videos" className="link">
-            <li className="sidebarListItem">
-              <PersonalVideoOutlined className="sidebarIcon" />
-              Videos
-            </li>
+              <li className="sidebarListItem">
+                <PersonalVideoOutlined className="sidebarIcon" />
+                Videos
+              </li>
             </Link>
             {/* <li className="sidebarListItem">
               <AttachMoney className="sidebarIcon" />
@@ -66,37 +70,45 @@ export default function Sidebar() {
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
+          <h3 className="sidebarTitle">Users</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
-              Mail
-            </li>
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Feedback
-            </li>
-            <li className="sidebarListItem">
+            <Link to="/users" className="link">
+              <li className="sidebarListItem">
+                <GroupOutlined className="sidebarIcon" />
+                User List
+              </li>
+            </Link>
+            <Link to="/newUser" className="link">
+              <li className="sidebarListItem">
+                <PersonAddOutlined className="sidebarIcon" />
+                New User
+              </li>
+            </Link>
+            {/* <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Messages
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
+          <h3 className="sidebarTitle">Videos</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <WorkOutline className="sidebarIcon" />
-              Manage
-            </li>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
-              Analytics
-            </li>
-            <li className="sidebarListItem">
+            <Link to="/videos" className="link">
+              <li className="sidebarListItem">
+                <VideoLibraryOutlined className="sidebarIcon" />
+                Video List
+              </li>
+            </Link>
+            <Link to="/newVideo" className="link">
+              <li className="sidebarListItem">
+                <VideoCallOutlined className="sidebarIcon" />
+                New Video
+              </li>
+            </Link>
+            {/* <li className="sidebarListItem">
               <Report className="sidebarIcon" />
               Reports
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

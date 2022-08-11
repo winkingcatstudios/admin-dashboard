@@ -43,7 +43,7 @@ export default function UserList() {
             </Link>
             <DeleteOutline
               className="userListDelete"
-              onClick={()=>handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row.id)}
             />
           </React.Fragment>
         );
@@ -53,6 +53,12 @@ export default function UserList() {
 
   return (
     <div className="userList">
+      <div className="productListTitleContainer">
+        <h1 className="productTitle">User List</h1>
+        <Link to="/newUser">
+          <button className="productListAddButton">Created User</button>
+        </Link>
+      </div>
       <DataGrid
         disableSelectionOnClick
         rows={data}
