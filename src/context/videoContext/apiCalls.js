@@ -30,10 +30,12 @@ export const getVideos = async (dispatch) => {
 export const createVideo = async (video, dispatch) => {
   dispatch(createVideoStart());
   try {
+    console.log(video);
     const res = await axios.post("http://localhost:5000/api/videos", video, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+        "content-Type": "application/json",
       },
     });
     dispatch(createVideoSuccess(res.data));
