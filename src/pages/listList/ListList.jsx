@@ -1,13 +1,16 @@
 import "./listList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+
 import { ListContext } from "../../context/listContext/ListContext";
 import { deleteList, getLists } from "../../context/listContext/apiCalls";
 
 export default function ListList() {
   const { lists, dispatch } = useContext(ListContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getLists(dispatch);
@@ -28,17 +31,22 @@ export default function ListList() {
       width: 150,
       renderCell: (params) => {
         return (
-          <>
-            <Link
-              to={{ pathname: "/list/" + params.row._id, list: params.row }}
+          <React.Fragment>
+            <button
+              onClick={() =>
+                navigate("/lists/" + params.row.id, {
+                  state: { list: params.row },
+                })
+              }
+              className="productListEdit"
             >
-              <button className="productListEdit">Edit</button>
-            </Link>
+              Edit
+            </button>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row.id)}
             />
-          </>
+          </React.Fragment>
         );
       },
     },
@@ -46,11 +54,17 @@ export default function ListList() {
 
   return (
     <div className="productList">
+      <div className="productListTitleContainer">
+        <h1 className="productTitle">Lists List</h1>
+        <Link to="/newList">
+          <button className="productListAddButton">Create List</button>
+        </Link>
+      </div>
       <DataGrid
         rows={lists}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pageSize={12}
         checkboxSelection
         getRowId={(r) => r._id}
       />

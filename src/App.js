@@ -23,6 +23,7 @@ import Login from "./pages/login/Login";
 import { useAuth } from "./hooks/auth-hook";
 import { AuthContext } from "./context/auth-context";
 import { VideoContextProvider } from "./context/videoContext/VideoContext";
+import { ListContextProvider } from "./context/listContext/ListContext";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -44,8 +45,8 @@ function App() {
             <Route path="/newVideo" element={<NewVideo />}></Route>
             <Route path="/videos/:videoId" element={<Video />}></Route>
             <Route path="/lists" element={<ListList />}></Route>
-            <Route path="/newList" element={<NewVideo />}></Route>
-            <Route path="/lists/:listId" element={<Video />}></Route>
+            <Route path="/newList" element={<NewList />}></Route>
+            <Route path="/lists/:listId" element={<List />}></Route>
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
@@ -72,7 +73,9 @@ function App() {
         logout: logout,
       }}
     >
-      <VideoContextProvider>{router}</VideoContextProvider>
+      <VideoContextProvider>
+        <ListContextProvider>{router}</ListContextProvider>
+      </VideoContextProvider>
     </AuthContext.Provider>
   );
 }

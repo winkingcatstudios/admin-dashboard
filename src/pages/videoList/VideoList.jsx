@@ -47,7 +47,6 @@ export default function VideoList() {
       renderCell: (params) => {
         return (
           <React.Fragment>
-            {/* <Link to={"/videos/" + params.row.id}> */}
             <button
               onClick={() =>
                 navigate("/videos/" + params.row.id, {
@@ -58,7 +57,6 @@ export default function VideoList() {
             >
               Edit
             </button>
-            {/* </Link> */}
             <DeleteOutline
               className="productListDelete"
               onClick={() => handleDelete(params.row.id)}
@@ -82,7 +80,7 @@ export default function VideoList() {
         disableSelectionOnClick
         rows={videos}
         columns={columns}
-        pageSize={15}
+        pageSize={12}
         rowsPerPageOptions={[5]}
         checkboxSelection
       />

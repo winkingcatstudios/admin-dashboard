@@ -4,7 +4,8 @@ import { Publish } from "@material-ui/icons";
 
 export default function List() {
   const location = useLocation();
-  const list = location.list;
+  const { list } = location.state;
+
   return (
     <div className="product">
       <div className="productTitleContainer">

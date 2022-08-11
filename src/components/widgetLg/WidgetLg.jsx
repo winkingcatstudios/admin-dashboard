@@ -9,7 +9,7 @@ export default function WidgetLg() {
 
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Latest Transactions</h3>
+      <h3 className="widgetLgTitle">Unused (Transaction)</h3>
       <table className="widgetLgTable">
         <tbody>
           <tr className="widgetLgTr">
@@ -25,10 +25,10 @@ export default function WidgetLg() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Sample User</span>
             </td>
             <td className="widgetLgDate">Jan 1 1970</td>
-            <td className="widgetLgAmount">$512</td>
+            <td className="widgetLgAmount">$0</td>
             <td className="widgetLgStatus">
               <Button type="Approved" />
             </td>
@@ -40,10 +40,10 @@ export default function WidgetLg() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Sample User</span>
             </td>
             <td className="widgetLgDate">Jan 1 1970</td>
-            <td className="widgetLgAmount">$512</td>
+            <td className="widgetLgAmount">$0</td>
             <td className="widgetLgStatus">
               <Button type="Declined" />
             </td>
@@ -55,10 +55,10 @@ export default function WidgetLg() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Sample User</span>
             </td>
             <td className="widgetLgDate">Jan 1 1970</td>
-            <td className="widgetLgAmount">$512</td>
+            <td className="widgetLgAmount">$0</td>
             <td className="widgetLgStatus">
               <Button type="Pending" />
             </td>
@@ -70,10 +70,10 @@ export default function WidgetLg() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Sample User</span>
             </td>
             <td className="widgetLgDate">Jan 1 1970</td>
-            <td className="widgetLgAmount">$512</td>
+            <td className="widgetLgAmount">$0</td>
             <td className="widgetLgStatus">
               <Button type="Approved" />
             </td>

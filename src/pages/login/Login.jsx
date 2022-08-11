@@ -13,7 +13,7 @@ import {
   VALIDATOR_REQUIRE,
 } from "../..//util/validators";
 import { useForm } from "../../hooks/form-hook";
-import { useHttpClient } from "../..//hooks/http-hook";
+import { useHttpClient } from "../../hooks/http-hook";
 import { AuthContext } from "../../context/auth-context";
 import "./login.css";
 

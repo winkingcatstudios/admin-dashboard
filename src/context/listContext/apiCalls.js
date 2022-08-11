@@ -14,12 +14,13 @@ import {
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("/lists", {
+    const res = await axios.get("http://localhost:5000/api/lists", {
       headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
       },
     });
-    dispatch(getListsSuccess(res.data));
+    dispatch(getListsSuccess(res.data.lists));
   } catch (err) {
     dispatch(getListsFailure());
   }

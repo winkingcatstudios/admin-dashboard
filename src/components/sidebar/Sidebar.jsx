@@ -62,10 +62,12 @@ export default function Sidebar() {
                 Videos
               </li>
             </Link>
+            <Link to="/lists" className="link">
             <li className="sidebarListItem">
               <FormatListBulletedOutlined className="sidebarIcon" />
               Lists
             </li>
+            </Link>
             {/* <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Reports
@@ -117,13 +119,13 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Lists</h3>
           <ul className="sidebarList">
-            <Link to="/videos" className="link">
+            <Link to="/lists" className="link">
               <li className="sidebarListItem">
                 <ListAltOutlined className="sidebarIcon" />
                 Lists List
               </li>
             </Link>
-            <Link to="/newVideo" className="link">
+            <Link to="/newList" className="link">
               <li className="sidebarListItem">
                 <PlaylistAddOutlined className="sidebarIcon" />
                 New List
