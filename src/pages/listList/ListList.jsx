@@ -21,7 +21,7 @@ export default function ListList() {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 250 },
+    { field: "id", headerName: "ID", width: 250 },
     { field: "title", headerName: "title", width: 250 },
     { field: "genre", headerName: "Genre", width: 150 },
     { field: "type", headerName: "type", width: 150 },
@@ -34,7 +34,7 @@ export default function ListList() {
           <React.Fragment>
             <button
               onClick={() =>
-                navigate("/lists/" + params.row._id, {
+                navigate("/lists/" + params.row.id, {
                   state: { list: params.row },
                 })
               }
@@ -44,7 +44,7 @@ export default function ListList() {
             </button>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row.id)}
             />
           </React.Fragment>
         );
@@ -61,11 +61,12 @@ export default function ListList() {
         </Link>
       </div>
       <DataGrid
-        getRowId={(r) => r._id}
-        rows={lists}
+        getRowId={row => row.id}
         disableSelectionOnClick
+        rows={lists}
         columns={columns}
         pageSize={12}
+        rowsPerPageOptions={[5]}
         checkboxSelection
       />
     </div>

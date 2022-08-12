@@ -75,6 +75,7 @@ export default function VideoList() {
         </Link>
       </div>
       <DataGrid
+        getRowId={(row) => row.id}
         disableSelectionOnClick
         rows={videos}
         columns={columns}
