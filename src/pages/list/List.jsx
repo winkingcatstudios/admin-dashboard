@@ -11,7 +11,7 @@ export default function List() {
       <div className="productTitleContainer">
         <h1 className="productTitle">List</h1>
         <Link to="/newList">
-          <button className="productAddButton">Create</button>
+          <button className="productAddButton">Create List</button>
         </Link>
       </div>
       <div className="productTop">

@@ -1,9 +1,10 @@
-import "./listList.css";
+
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
 
+import "./listList.css";
 import { ListContext } from "../../context/listContext/ListContext";
 import { deleteList, getLists } from "../../context/listContext/apiCalls";
 
@@ -34,7 +35,7 @@ export default function ListList() {
           <React.Fragment>
             <button
               onClick={() =>
-                navigate("/lists/" + params.row.id, {
+                navigate("/lists/" + params.row._id, {
                   state: { list: params.row },
                 })
               }
@@ -44,7 +45,7 @@ export default function ListList() {
             </button>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </React.Fragment>
         );

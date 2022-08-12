@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 
-import { productRows } from "../../dummyData";
 import "./videoList.css";
 import { VideoContext } from "../../context/videoContext/VideoContext";
 import { deleteVideo, getVideos } from "../../context/videoContext/apiCalls";
@@ -68,7 +67,6 @@ export default function VideoList() {
   ];
 
   return (
-    
     <div className="productList">
       <div className="productListTitleContainer">
         <h1 className="productTitle">Video List</h1>
