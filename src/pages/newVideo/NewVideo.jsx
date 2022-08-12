@@ -5,7 +5,6 @@ import { useState } from "react";
 import { createVideo } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
 import storage from "../../firebase";
-import { useHttpClient } from "../..//hooks/http-hook";
 import "./newVideo.css";
 
 export default function NewVideo() {
@@ -16,8 +15,6 @@ export default function NewVideo() {
   const [trailerVideo, setTrailerVideo] = useState(null);
   const [fullVideo, setFullVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
-
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const { dispatch } = useContext(VideoContext);
 
