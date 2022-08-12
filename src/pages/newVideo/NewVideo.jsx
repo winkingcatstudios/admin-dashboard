@@ -78,25 +78,9 @@ export default function NewVideo() {
       fullVideo: video.fullVideo,
       year: video.year,
       ageLimit: video.ageLimit,
-      genre: video.genre,
+      genre: video.genre || "other",
       isSeries: video.isSeries || "false",
     });
-
-    // pre-axios request logic
-    // try {
-    //   const responseData = await sendRequest(
-    //     "http://localhost:5000/api/videos",
-    //     "POST",
-    //     jsonVideo,
-    //     {
-    //       Authorization:
-    //         "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
-    //       "content-Type": "application/json",
-    //     }
-    //   );
-    // } catch (err) {
-    //   // caught in http-hook
-    // }
     createVideo(jsonVideo, dispatch);
   };
 
@@ -151,12 +135,17 @@ export default function NewVideo() {
         </div>
         <div className="addProductItem">
           <label>Genre</label>
-          <input
-            type="text"
-            placeholder="Video Genre"
-            name="genre"
-            onChange={handleChange}
-          />
+          <select name="genre" onChange={handleChange}>
+                <option>Genre</option>
+                <option value="5e">D&D 5e</option>
+                <option value="osr">OSR</option>
+                <option value="pathfinder">Pathfinder</option>
+                <option value="cypher">Cypher System</option>
+                <option value="cthulhi">Call of Cthulhu</option>
+                <option value="starwars">Star Wars</option>
+                <option value="cats">Cats</option>
+                <option value="other">Other</option>
+            </select>
         </div>
         <div className="addProductItem">
           <label>Year</label>

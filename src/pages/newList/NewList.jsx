@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function NewList() {
   const [list, setList] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { dispatch } = useContext(ListContext);
   const { videos, dispatch: dispatchVideo } = useContext(VideoContext);
@@ -34,13 +34,12 @@ export default function NewList() {
     const jsonList = JSON.stringify({
       title: list.title,
       type: list.type || "Oneshots",
-      genre: list.genre,
+      genre: list.genre || "Other",
       content: list.content,
-
     });
 
     createList(jsonList, dispatch);
-    navigate("/newList")
+    navigate("/newList");
   };
 
   return (
@@ -59,12 +58,17 @@ export default function NewList() {
           </div>
           <div className="addProductItem">
             <label>Genre</label>
-            <input
-              type="text"
-              placeholder="List Genre"
-              name="genre"
-              onChange={handleChange}
-            />
+            <select name="genre" onChange={handleChange}>
+                <option>Genre</option>
+                <option value="5e">D&D 5e</option>
+                <option value="osr">OSR</option>
+                <option value="pathfinder">Pathfinder</option>
+                <option value="cypher">Cypher System</option>
+                <option value="cthulhi">Call of Cthulhu</option>
+                <option value="starwars">Star Wars</option>
+                <option value="cats">Cats</option>
+                <option value="other">Other</option>
+            </select>
           </div>
           <div className="addProductItem">
             <label>Type</label>
