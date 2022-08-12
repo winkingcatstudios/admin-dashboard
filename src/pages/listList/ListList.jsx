@@ -1,4 +1,3 @@
-
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -62,12 +61,12 @@ export default function ListList() {
         </Link>
       </div>
       <DataGrid
+        getRowId={(r) => r._id}
         rows={lists}
         disableSelectionOnClick
         columns={columns}
         pageSize={12}
         checkboxSelection
-        getRowId={(r) => r._id}
       />
     </div>
   );
