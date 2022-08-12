@@ -82,7 +82,6 @@ export default function NewVideo() {
       isSeries: video.isSeries || "false",
     });
 
-    console.log(jsonVideo);
     // pre-axios request logic
     // try {
     //   const responseData = await sendRequest(

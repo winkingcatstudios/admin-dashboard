@@ -20,9 +20,7 @@ export const getLists = async (dispatch) => {
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
       },
     });
-    console.log(res.data.lists)
     dispatch(getListsSuccess(res.data.lists));
-    console.log(res.data.lists)
   } catch (err) {
     dispatch(getListsFailure());
   }
@@ -32,10 +30,11 @@ export const getLists = async (dispatch) => {
 export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await axios.post("http://localhost:5000/api/lists/", list, {
+    const res = await axios.post("http://localhost:5000/api/lists", list, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+        "content-Type": "application/json",
       },
     });
     dispatch(createListSuccess(res.data));

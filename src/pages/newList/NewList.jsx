@@ -30,8 +30,17 @@ export default function NewList() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createList(list, dispatch);
-    navigate.push("/lists")
+
+    const jsonList = JSON.stringify({
+      title: list.title,
+      type: list.type || "Oneshots",
+      genre: list.genre,
+      content: list.content,
+
+    });
+
+    createList(jsonList, dispatch);
+    navigate("/newList")
   };
 
   return (
@@ -43,7 +52,7 @@ export default function NewList() {
             <label>Title</label>
             <input
               type="text"
-              placeholder="Popular Videos"
+              placeholder="List Title"
               name="title"
               onChange={handleChange}
             />
@@ -52,7 +61,7 @@ export default function NewList() {
             <label>Genre</label>
             <input
               type="text"
-              placeholder="action"
+              placeholder="List Genre"
               name="genre"
               onChange={handleChange}
             />
@@ -61,8 +70,8 @@ export default function NewList() {
             <label>Type</label>
             <select name="type" onChange={handleChange}>
               <option>Type</option>
-              <option value="video">Video</option>
-              <option value="series">Series</option>
+              <option value="Oneshots">Oneshots</option>
+              <option value="Series">Series</option>
             </select>
           </div>
         </div>
