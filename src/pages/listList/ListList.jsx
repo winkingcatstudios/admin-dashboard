@@ -61,7 +61,7 @@ export default function ListList() {
         </Link>
       </div>
       <DataGrid
-        getRowId={row => row.id}
+        getRowId={row => row._id}
         disableSelectionOnClick
         rows={lists}
         columns={columns}

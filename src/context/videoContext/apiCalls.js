@@ -38,6 +38,7 @@ export const createVideo = async (video, dispatch) => {
       },
     });
     dispatch(createVideoSuccess(res.data));
+    getVideos(dispatch);
   } catch (err) {
     dispatch(createVideoFailure());
   }

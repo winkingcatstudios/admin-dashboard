@@ -38,6 +38,7 @@ export const createList = async (list, dispatch) => {
       },
     });
     dispatch(createListSuccess(res.data));
+    getLists(dispatch);
   } catch (err) {
     dispatch(createListFailure());
   }
