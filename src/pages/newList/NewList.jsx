@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import "./newList.css";
 import storage from "../../firebase";
-import { createVideo, getVideos } from "../../context/videoContext/apiCalls";
+import { getVideos } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createList } from "../../context/listContext/apiCalls";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function NewList() {
   const [list, setList] = useState(null);
@@ -33,8 +33,8 @@ export default function NewList() {
 
     const jsonList = JSON.stringify({
       title: list.title,
-      type: list.type || "Oneshots",
-      genre: list.genre || "Other",
+      type: list.type || "oneshots",
+      genre: list.genre || "other",
       content: list.content,
     });
 
@@ -59,23 +59,21 @@ export default function NewList() {
           <div className="addProductItem">
             <label>Genre</label>
             <select name="genre" onChange={handleChange}>
-                <option>Genre</option>
-                <option value="5e">D&D 5e</option>
-                <option value="osr">OSR</option>
-                <option value="pathfinder">Pathfinder</option>
-                <option value="cypher">Cypher System</option>
-                <option value="cthulhi">Call of Cthulhu</option>
-                <option value="starwars">Star Wars</option>
-                <option value="cats">Cats</option>
-                <option value="other">Other</option>
+              <option value="other">Other</option>
+              <option value="5e">D&D 5e</option>
+              <option value="osr">OSR</option>
+              <option value="pathfinder">Pathfinder</option>
+              <option value="cypher">Cypher System</option>
+              <option value="cthulhi">Call of Cthulhu</option>
+              <option value="starwars">Star Wars</option>
+              <option value="cats">Cats</option>
             </select>
           </div>
           <div className="addProductItem">
             <label>Type</label>
             <select name="type" onChange={handleChange}>
-              <option>Type</option>
-              <option value="Oneshots">Oneshots</option>
-              <option value="Series">Series</option>
+              <option value="oneshots">Oneshots</option>
+              <option value="series">Series</option>
             </select>
           </div>
         </div>

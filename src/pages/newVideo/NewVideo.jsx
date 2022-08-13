@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { createVideo } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
@@ -15,6 +16,14 @@ export default function NewVideo() {
   const [trailerVideo, setTrailerVideo] = useState(null);
   const [fullVideo, setFullVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
+
+  const navigate = useNavigate();
+
+  const thisYear = new Date().getFullYear();
+  let YEAR_SELECTS = [];
+  for (var i = thisYear; i >= 1974; i--) {
+    YEAR_SELECTS.push(<option value={i}>{i}</option>);
+  }
 
   const { dispatch } = useContext(VideoContext);
 
@@ -69,16 +78,19 @@ export default function NewVideo() {
       title: video.title,
       description: video.description,
       image: video.image,
-      imageTitle: video.imageTitle,
+      imageTitle:
+        video.imageTitle ||
+        "https://winkingcatstudio.com/winkingcatlogo-transparent-white.png",
       imageThumb: video.imageThumb,
       trailerVideo: video.trailerVideo,
       fullVideo: video.fullVideo,
-      year: video.year,
-      ageLimit: video.ageLimit,
+      year: video.year || thisYear,
+      ageLimit: video.ageLimit || "0",
       genre: video.genre || "other",
       isSeries: video.isSeries || "false",
     });
     createVideo(jsonVideo, dispatch);
+    navigate("/videos");
   };
 
   return (
@@ -133,34 +145,31 @@ export default function NewVideo() {
         <div className="addProductItem">
           <label>Genre</label>
           <select name="genre" onChange={handleChange}>
-                <option>Genre</option>
-                <option value="5e">D&D 5e</option>
-                <option value="osr">OSR</option>
-                <option value="pathfinder">Pathfinder</option>
-                <option value="cypher">Cypher System</option>
-                <option value="cthulhi">Call of Cthulhu</option>
-                <option value="starwars">Star Wars</option>
-                <option value="cats">Cats</option>
-                <option value="other">Other</option>
-            </select>
+            <option value="other">Other</option>
+            <option value="5e">D&D 5e</option>
+            <option value="osr">OSR</option>
+            <option value="pathfinder">Pathfinder</option>
+            <option value="cypher">Cypher System</option>
+            <option value="cthulhi">Call of Cthulhu</option>
+            <option value="starwars">Star Wars</option>
+            <option value="cats">Cats</option>
+          </select>
         </div>
         <div className="addProductItem">
           <label>Year</label>
-          <input
-            type="text"
-            placeholder="Video Year"
-            name="year"
-            onChange={handleChange}
-          />
+          <select name="year" onChange={handleChange}>
+            {YEAR_SELECTS}
+            {/* <option value="1974">1974</option> */}
+          </select>
         </div>
         <div className="addProductItem">
-          <label>Age Limit</label>
-          <input
-            type="text"
-            placeholder="Video Age Limit"
-            name="ageLimit"
-            onChange={handleChange}
-          />
+          <label>Minimum Age</label>
+          <select name="ageLimit" onChange={handleChange}>
+            <option value="0">-</option>
+            <option value="7">7</option>
+            <option value="13">13</option>
+            <option value="18">18</option>
+          </select>
         </div>
         <div className="addProductItem">
           <label>Is Series?</label>
