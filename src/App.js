@@ -24,6 +24,7 @@ import { useAuth } from "./hooks/auth-hook";
 import { AuthContext } from "./context/auth-context";
 import { VideoContextProvider } from "./context/videoContext/VideoContext";
 import { ListContextProvider } from "./context/listContext/ListContext";
+import { UserContextProvider } from "./context/userContext/UserContext";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -40,7 +41,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/users" element={<UserList />}></Route>
             <Route path="/newUser" element={<NewUser />}></Route>
-            <Route path="/user/:userId" element={<User />}></Route>
+            <Route path="/users/:userId" element={<User />}></Route>
             <Route path="/videos" element={<VideoList />}></Route>
             <Route path="/newVideo" element={<NewVideo />}></Route>
             <Route path="/videos/:videoId" element={<Video />}></Route>
@@ -74,7 +75,9 @@ function App() {
       }}
     >
       <VideoContextProvider>
-        <ListContextProvider>{router}</ListContextProvider>
+        <ListContextProvider>
+          <UserContextProvider>{router}</UserContextProvider>
+        </ListContextProvider>
       </VideoContextProvider>
     </AuthContext.Provider>
   );

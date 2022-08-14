@@ -1,36 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { userRows } from "../../dummyData";
+import { UserContext } from "../../context/userContext/UserContext";
+import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import "./userList.css";
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
+  const { users, dispatch } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getUsers(dispatch);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    console.log(id);
+    deleteUser(id, dispatch);
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
-    {
-      field: "user",
-      headerName: "User",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="userListUser">
-            <img className="userListImg" src={params.row.avatar} alt="" />
-            {params.row.username}
-          </div>
-        );
-      },
-    },
-    { field: "email", headerName: "Email", width: 200 },
-    { field: "status", headerName: "Status", width: 120 },
-    { field: "transaction", headerName: "Transaction Volune", width: 160 },
+    { field: "id", headerName: "ID", width: 210 },
+    { field: "name", headerName: "Name", width: 200 },
+    { field: "email", headerName: "Email", width: 300 },
+    { field: "isAdmin", headerName: "Is Admin?", width: 120 },
     {
       field: "action",
       headerName: "Action",
@@ -38,11 +33,18 @@ export default function UserList() {
       renderCell: (params) => {
         return (
           <React.Fragment>
-            <Link to={"/user/" + params.row.id}>
-              <button className="userListEdit">Edit</button>
-            </Link>
+            <button
+              onClick={() =>
+                navigate("/users/" + params.row.id, {
+                  state: { user: params.row },
+                })
+              }
+              className="productListEdit"
+            >
+              Edit
+            </button>
             <DeleteOutline
-              className="userListDelete"
+              className="productListDelete"
               onClick={() => handleDelete(params.row.id)}
             />
           </React.Fragment>
@@ -56,12 +58,13 @@ export default function UserList() {
       <div className="productListTitleContainer">
         <h1 className="productTitle">User List</h1>
         <Link to="/newUser">
-          <button className="productListAddButton">Created User</button>
+          <button className="productListAddButton">Create User</button>
         </Link>
       </div>
       <DataGrid
+        getRowId={(row) => row.id}
         disableSelectionOnClick
-        rows={data}
+        rows={users}
         columns={columns}
         pageSize={12}
         rowsPerPageOptions={[5]}

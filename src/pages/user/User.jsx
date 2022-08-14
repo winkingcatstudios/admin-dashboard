@@ -7,54 +7,43 @@ import {
   LocationSearching,
   Publish,
 } from "@material-ui/icons";
+import { Link, useLocation } from "react-router-dom";
 
 import "./user.css";
-import { Link } from "react-router-dom";
 
 export default function User() {
+  const location = useLocation();
+  const { user } = location.state;
+
   return (
     <div className="user">
       <div className="userTitleContainer">
         <h1 className="userTitle">Edit User</h1>
         <Link to="/newUser">
-        <button className="productListAddButton">Created User</button>
+          <button className="productListAddButton">Create User</button>
         </Link>
       </div>
       <div className="userContainer">
         <div className="userDisplay">
-          <div className="userDisplayTop">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg"
-              alt=""
-              className="userDisplayImg"
-            />
-            <div className="userDisplayTopTitle">
-              <span className="userDisplayUsername">Dan Kercher</span>
-              <span className="userDisplayTitle">Software Engineer</span>
-            </div>
-          </div>
           <div className="userDisplayBottom">
             <span className="userDisplayTitle">Account Details</span>
             <div className="userDisplayInfo">
               <PermIdentity className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">dkercher</span>
-            </div>
-            <div className="userDisplayInfo">
-              <CalendarToday className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">1.1.1970</span>
-            </div>
-            <span className="userDisplayTitle">Contact Details</span>
-            <div className="userDisplayInfo">
-              <PhoneAndroid className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">+1 123 456 7890</span>
+              <span className="userDisplayInfoTitle">{user.name}</span>
             </div>
             <div className="userDisplayInfo">
               <MailOutline className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">info@email.com</span>
+              <span className="userDisplayInfoTitle">i{user.email}</span>
             </div>
+            <span className="userDisplayTitle">Signed Up</span>
             <div className="userDisplayInfo">
-              <LocationSearching className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">New York, USA</span>
+              <CalendarToday className="userDisplayIcon" />
+              <span className="userDisplayInfoTitle">{user.createdAt}</span>
+            </div>
+            <span className="userDisplayTitle">Last Modified</span>
+            <div className="userDisplayInfo">
+              <CalendarToday className="userDisplayIcon" />
+              <span className="userDisplayInfoTitle">{user.updatedAt}</span>
             </div>
           </div>
         </div>
@@ -63,18 +52,10 @@ export default function User() {
           <form className="userUpdateForm">
             <div className="userUpdateLeft">
               <div className="userUpdateItem">
-                <label>Username</label>
+                <label>Name</label>
                 <input
                   type="text"
-                  placeholder="dkercher"
-                  className="userUpdateInput"
-                ></input>
-              </div>
-              <div className="userUpdateItem">
-                <label>Full Name</label>
-                <input
-                  type="text"
-                  placeholder="Dan Kercher"
+                  placeholder={user.name}
                   className="userUpdateInput"
                 ></input>
               </div>
@@ -82,43 +63,20 @@ export default function User() {
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="info@email.com"
+                  placeholder={user.email}
                   className="userUpdateInput"
                 ></input>
               </div>
               <div className="userUpdateItem">
-                <label>Phone</label>
+                <label>Password</label>
                 <input
-                  type="text"
-                  placeholder="+1 123 456 7890"
-                  className="userUpdateInput"
-                ></input>
-              </div>
-              <div className="userUpdateItem">
-                <label>Address</label>
-                <input
-                  type="text"
-                  placeholder="New York, USA"
+                  type="password"
+                  placeholder="Password"
                   className="userUpdateInput"
                 ></input>
               </div>
             </div>
             <div className="userUpdateRight">
-              <div className="userUpdateUpload">
-                <img
-                  className="userUpdateImg"
-                  src="https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg"
-                  alt=""
-                />
-                <label htmlFor="file">
-                  <Publish className="userUpdateIcon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  style={{ display: "none" }}
-                ></input>
-              </div>
               <button className="userUpdateButton">Update</button>
             </div>
           </form>

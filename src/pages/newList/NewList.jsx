@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./newList.css";
-import storage from "../../firebase";
 import { getVideos } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createList } from "../../context/listContext/apiCalls";
-import { useNavigate } from "react-router-dom";
+
 
 export default function NewList() {
   const [list, setList] = useState(null);
