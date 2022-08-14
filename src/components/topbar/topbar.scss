@@ -63,8 +63,9 @@
   .options {
     margin-top: 10px;
     display: none;
-    background-color: var(--main-color);
+    background-color: black;
     border-radius: 5px;
+    color: white;
   }
 
   span {
@@ -72,7 +73,7 @@
     cursor: pointer;
   }
 
-  .options>span{
+  .options > span {
     margin-top: 5px;
   }
 
