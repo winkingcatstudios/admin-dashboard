@@ -38,7 +38,7 @@ export default function VideoList() {
     { field: "genre", headerName: "Genre", width: 150 },
     { field: "year", headerName: "Year", width: 75 },
     { field: "ageLimit", headerName: "Age Limit", width: 75 },
-    { field: "isSeries", headerName: "Series?", width: 75 },
+    { field: "type", headerName: "Type", width: 75 },
     {
       field: "action",
       headerName: "Action",

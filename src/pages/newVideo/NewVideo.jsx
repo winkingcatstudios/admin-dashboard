@@ -87,7 +87,7 @@ export default function NewVideo() {
       year: video.year || thisYear,
       ageLimit: video.ageLimit || "0",
       genre: video.genre || "other",
-      isSeries: video.isSeries || "false",
+      type: video.type || "oneshots",
     });
     createVideo(jsonVideo, dispatch);
     navigate("/videos");
@@ -171,10 +171,11 @@ export default function NewVideo() {
           </select>
         </div>
         <div className="addProductItem">
-          <label>Is Series?</label>
-          <select name="isSeries" id="isSeries" onChange={handleChange}>
-            <option value="false">No</option>
-            <option value="true">Yes</option>
+          <label>Type</label>
+          <select name="type" id="type" onChange={handleChange}>
+            <option value="oneshots">Oneshot</option>
+            <option value="series">Series</option>
+            <option value="cats">Cats</option>
           </select>
         </div>
         <div

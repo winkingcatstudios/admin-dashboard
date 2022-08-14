@@ -74,6 +74,7 @@ export default function NewList() {
             <select name="type" onChange={handleChange}>
               <option value="oneshots">Oneshots</option>
               <option value="series">Series</option>
+              <option value="cats">Cats</option>
             </select>
           </div>
         </div>
