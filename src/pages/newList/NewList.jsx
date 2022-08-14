@@ -67,7 +67,6 @@ export default function NewList() {
               <option value="cypher">Cypher System</option>
               <option value="cthulhi">Call of Cthulhu</option>
               <option value="starwars">Star Wars</option>
-              <option value="cats">Cats</option>
             </select>
           </div>
           <div className="addProductItem">
