@@ -35,7 +35,7 @@ export default function Home() {
     const getStats = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/users/stats",
+          `${process.env.REACT_APP_BACKEND_URL}/users/stats`,
           {
             headers: {
               Authorization:

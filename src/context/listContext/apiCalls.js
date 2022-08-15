@@ -14,7 +14,7 @@ import {
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("http://localhost:5000/api/lists", {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/lists`, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
@@ -30,7 +30,7 @@ export const getLists = async (dispatch) => {
 export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await axios.post("http://localhost:5000/api/lists", list, {
+    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/lists`, list, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
@@ -48,7 +48,7 @@ export const createList = async (list, dispatch) => {
 export const deleteList = async (id, dispatch) => {
   dispatch(deleteListStart());
   try {
-    await axios.delete("http://localhost:5000/api/lists/" + id, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/lists/` + id, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,

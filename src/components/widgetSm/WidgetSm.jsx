@@ -13,7 +13,7 @@ export default function WidgetSm() {
     const getNewUsers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/users?new=true",
+          `${process.env.REACT_APP_BACKEND_URL}/users?new=true`,
           {
             headers: {
               Authorization:

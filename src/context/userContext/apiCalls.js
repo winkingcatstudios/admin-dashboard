@@ -14,7 +14,7 @@ import {
 export const getUsers = async (dispatch) => {
   dispatch(getUsersStart());
   try {
-    const response = await axios.get("http://localhost:5000/api/users", {
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
@@ -30,7 +30,7 @@ export const getUsers = async (dispatch) => {
 export const createUser = async (user, dispatch) => {
   dispatch(createUserStart());
   try {
-    const res = await axios.post("http://localhost:5000/api/users/signup", user, {
+    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/signup`, user, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
@@ -48,7 +48,7 @@ export const createUser = async (user, dispatch) => {
 export const deleteUser = async (id, dispatch) => {
   dispatch(deleteUserStart());
   try {
-    await axios.delete("http://localhost:5000/api/users/" + id, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/users/` + id, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
