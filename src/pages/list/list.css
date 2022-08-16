@@ -120,8 +120,15 @@
   margin-right: 20px;
 }
 
-.productFormRight {
-  
+.productInfoVideoList{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productInfoVideos{
+  font-weight: 300;
+  margin: 5px;
+  margin-right: 20px;
 }
 
 .productUpload {

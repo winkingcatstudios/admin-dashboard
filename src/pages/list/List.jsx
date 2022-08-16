@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Publish } from "@material-ui/icons";
+import axios from "axios";
 
 import { getVideos } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
@@ -15,10 +16,35 @@ export default function List() {
   const navigate = useNavigate();
   const { dispatch } = useContext(ListContext);
   const { videos, dispatch: dispatchVideo } = useContext(VideoContext);
+  const [videoNames, setVideoNames] = useState([]);
 
   useEffect(() => {
     getVideos(dispatchVideo);
   }, [dispatchVideo]);
+
+  useEffect(() => {
+    const getVideo = async (index) => {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/videos/find/` +
+            list.content[index],
+          {
+            headers: {
+              Authorization:
+                "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+            },
+          }
+        );
+        setVideoNames((prev) => [...prev, response.data.video.title]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    for (let i = 0; i < list.content.length; i++) {
+      getVideo(i);
+    }
+    // getVideo();
+  }, [list]);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -70,63 +96,74 @@ export default function List() {
               <span className="productInfoKey">Genre:</span>
               <span className="productInfoValue">{list.genre}</span>
             </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">Content:</span>
+            </div>
+            <div className="productInfoVideoList">
+              {videoNames.map((videoName) => (
+                <>
+                <span className="productInfoVideos">{videoName}</span>
+                <span className="productInfoVideos"> {" | "}</span>
+                </>
+              ))}
+            </div>
           </div>
         </div>
       </div>
       <div className="productBottom">
-      <form className="addProductForm">
-        <div className="formLeft">
-          <div className="addProductItem">
-            <label>Title</label>
-            <input
-              type="text"
-              placeholder="List Title"
-              name="title"
-              onChange={handleChange}
-            />
+        <form className="addProductForm">
+          <div className="formLeft">
+            <div className="addProductItem">
+              <label>Title</label>
+              <input
+                type="text"
+                placeholder="List Title"
+                name="title"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Type</label>
+              <select name="type" onChange={handleChange}>
+                <option value="oneshots">Oneshots</option>
+                <option value="series">Series</option>
+                <option value="cats">Cats</option>
+              </select>
+            </div>
+            <div className="addProductItem">
+              <label>Genre</label>
+              <select name="genre" onChange={handleChange}>
+                <option value="other">Other</option>
+                <option value="5e">D&D 5e</option>
+                <option value="osr">OSR</option>
+                <option value="pathfinder">Pathfinder</option>
+                <option value="cypher">Cypher System</option>
+                <option value="cthulhi">Call of Cthulhu</option>
+                <option value="starwars">Star Wars</option>
+              </select>
+            </div>
           </div>
-          <div className="addProductItem">
-            <label>Type</label>
-            <select name="type" onChange={handleChange}>
-              <option value="oneshots">Oneshots</option>
-              <option value="series">Series</option>
-              <option value="cats">Cats</option>
-            </select>
+          <div className="formRight">
+            <div className="addProductItem">
+              <label>Content</label>
+              <select
+                multiple
+                name="content"
+                onChange={handleSelect}
+                style={{ height: "280px" }}
+              >
+                {videos.map((video) => (
+                  <option key={video._id} value={video._id}>
+                    {video.title}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="addProductItem">
-            <label>Genre</label>
-            <select name="genre" onChange={handleChange}>
-              <option value="other">Other</option>
-              <option value="5e">D&D 5e</option>
-              <option value="osr">OSR</option>
-              <option value="pathfinder">Pathfinder</option>
-              <option value="cypher">Cypher System</option>
-              <option value="cthulhi">Call of Cthulhu</option>
-              <option value="starwars">Star Wars</option>
-            </select>
-          </div>
-        </div>
-        <div className="formRight">
-          <div className="addProductItem">
-            <label>Content</label>
-            <select
-              multiple
-              name="content"
-              onChange={handleSelect}
-              style={{ height: "280px" }}
-            >
-              {videos.map((video) => (
-                <option key={video._id} value={video._id}>
-                  {video.title}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        <button className="addProductButton" onClick={handleSubmit}>
-          Update
-        </button>
-      </form>
+          <button className="addProductButton" onClick={handleSubmit}>
+            Update
+          </button>
+        </form>
       </div>
     </div>
   );
