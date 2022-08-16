@@ -6,13 +6,18 @@ import axios from "axios";
 import { getVideos } from "../../context/videoContext/apiCalls";
 import { VideoContext } from "../../context/videoContext/VideoContext";
 import { ListContext } from "../../context/listContext/ListContext";
-import { createList } from "../../context/listContext/apiCalls";
+import { updateList } from "../../context/listContext/apiCalls";
 import "./list.css";
 
 export default function List() {
   const location = useLocation();
   const { list } = location.state;
-  const [updatedList, setUpdatedList] = useState(null);
+  const [updatedList, setUpdatedList] = useState({
+    title: list.title,
+    type: list.type,
+    genre: list.genre,
+    content: list.content,
+  });
   const navigate = useNavigate();
   const { dispatch } = useContext(ListContext);
   const { videos, dispatch: dispatchVideo } = useContext(VideoContext);
@@ -43,7 +48,6 @@ export default function List() {
     for (let i = 0; i < list.content.length; i++) {
       getVideo(i);
     }
-    // getVideo();
   }, [list]);
 
   const handleChange = (e) => {
@@ -53,20 +57,20 @@ export default function List() {
 
   const handleSelect = (e) => {
     let value = Array.from(e.target.selectedOptions, (option) => option.value);
-    updatedList({ ...list, [e.target.name]: value });
+    setUpdatedList({ ...updatedList, [e.target.name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const jsonList = JSON.stringify({
-      title: list.title,
-      type: list.type || "oneshots",
-      genre: list.genre || "other",
-      content: list.content,
+      title: updatedList.title,
+      type: updatedList.type,
+      genre: updatedList.genre,
+      content: updatedList.content,
     });
 
-    createList(jsonList, dispatch);
+    updateList(list._id, jsonList, dispatch);
     navigate("/lists");
   };
 
@@ -102,8 +106,8 @@ export default function List() {
             <div className="productInfoVideoList">
               {videoNames.map((videoName) => (
                 <>
-                <span className="productInfoVideos">{videoName}</span>
-                <span className="productInfoVideos"> {" | "}</span>
+                  <span className="productInfoVideos">{videoName}</span>
+                  <span className="productInfoVideos"> {" | "}</span>
                 </>
               ))}
             </div>
@@ -125,6 +129,7 @@ export default function List() {
             <div className="addProductItem">
               <label>Type</label>
               <select name="type" onChange={handleChange}>
+                <option>Select New Type</option>
                 <option value="oneshots">Oneshots</option>
                 <option value="series">Series</option>
                 <option value="cats">Cats</option>
@@ -133,6 +138,7 @@ export default function List() {
             <div className="addProductItem">
               <label>Genre</label>
               <select name="genre" onChange={handleChange}>
+                <option>Select New Genre</option>
                 <option value="other">Other</option>
                 <option value="5e">D&D 5e</option>
                 <option value="osr">OSR</option>

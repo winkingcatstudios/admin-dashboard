@@ -24,7 +24,7 @@ export default function ListList() {
     { field: "id", headerName: "ID", width: 250 },
     { field: "title", headerName: "title", width: 250 },
     { field: "genre", headerName: "Genre", width: 150 },
-    { field: "type", headerName: "type", width: 150 },
+    { field: "type", headerName: "Type", width: 150 },
     {
       field: "action",
       headerName: "Action",

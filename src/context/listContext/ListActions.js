@@ -28,9 +28,9 @@ export const updateListStart = () => ({
   type: "UPDATE_LIST_START",
 });
 
-export const updateListSuccess = (video) => ({
+export const updateListSuccess = (list) => ({
   type: "UPDATE_LIST_SUCCESS",
-  payload: video,
+  payload: list,
 });
 
 export const updateListFailure = () => ({

@@ -9,6 +9,9 @@ import {
   getListsFailure,
   getListsStart,
   getListsSuccess,
+  updateListStart,
+  updateListSuccess,
+  updateListFailure
 } from "./ListActions";
 
 export const getLists = async (dispatch) => {
@@ -41,6 +44,24 @@ export const createList = async (list, dispatch) => {
     getLists(dispatch);
   } catch (err) {
     dispatch(createListFailure());
+  }
+};
+
+//update
+export const updateList = async (id, list, dispatch) => {
+  dispatch(updateListStart());
+  try {
+    const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/lists/`  + id, list, {
+      headers: {
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+        "content-Type": "application/json",
+      },
+    });
+    dispatch(updateListSuccess(res.data));
+    getLists(dispatch);
+  } catch (err) {
+    dispatch(updateListFailure());
   }
 };
 
