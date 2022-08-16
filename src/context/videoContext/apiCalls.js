@@ -48,10 +48,10 @@ export const createVideo = async (video, dispatch) => {
 };
 
 //update
-export const updateVideo = async (id, list, dispatch) => {
+export const updateVideo = async (id, video, dispatch) => {
   dispatch(updateVideoStart());
   try {
-    const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/videos/`  + id, list, {
+    const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/videos/`  + id, video, {
       headers: {
         Authorization:
           "Bearer " + JSON.parse(localStorage.getItem("userData")).token,

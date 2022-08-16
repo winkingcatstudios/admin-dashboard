@@ -9,6 +9,9 @@ import {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure
 } from "./UserActions";
 
 export const getUsers = async (dispatch) => {
@@ -41,6 +44,24 @@ export const createUser = async (user, dispatch) => {
     getUsers(dispatch);
   } catch (err) {
     dispatch(createUserFailure());
+  }
+};
+
+//update
+export const updateUser = async (id, user, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/users/`  + id, user, {
+      headers: {
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+        "content-Type": "application/json",
+      },
+    });
+    dispatch(updateUserSuccess(res.data));
+    getUsers(dispatch);
+  } catch (err) {
+    dispatch(updateUserFailure());
   }
 };
 
