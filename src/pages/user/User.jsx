@@ -18,7 +18,7 @@ export default function User() {
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Edit User</h1>
+        <h1 className="userTitle">User</h1>
         <Link to="/newUser">
           <button className="productListAddButton">Create User</button>
         </Link>
@@ -33,7 +33,7 @@ export default function User() {
             </div>
             <div className="userDisplayInfo">
               <MailOutline className="userDisplayIcon" />
-              <span className="userDisplayInfoTitle">i{user.email}</span>
+              <span className="userDisplayInfoTitle">{user.email}</span>
             </div>
             <span className="userDisplayTitle">Signed Up</span>
             <div className="userDisplayInfo">

@@ -7,6 +7,10 @@
     flex-wrap: wrap;
 }
 
+.newUserTitle{
+    margin: 20px;
+}
+
 .newUserItem{
     width: 400px;
     display: flex;

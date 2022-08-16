@@ -2,6 +2,10 @@
   flex: 4;
 }
 
+.addProductTitle{
+  margin: 20px;
+}
+
 .addProductForm {
   margin-top: 10px;
   display: flex;
