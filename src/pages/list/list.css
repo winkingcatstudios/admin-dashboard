@@ -50,6 +50,13 @@
   align-items: center;
 }
 
+.editProductItem {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
 .productName {
   font-weight: 600;
 }
@@ -114,9 +121,7 @@
 }
 
 .productFormRight {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  
 }
 
 .productUpload {
@@ -132,4 +137,5 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
+  margin-top: 20px;
 }

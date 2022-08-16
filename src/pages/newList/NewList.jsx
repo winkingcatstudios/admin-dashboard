@@ -7,11 +7,9 @@ import { VideoContext } from "../../context/videoContext/VideoContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createList } from "../../context/listContext/apiCalls";
 
-
 export default function NewList() {
   const [list, setList] = useState(null);
   const navigate = useNavigate();
-
   const { dispatch } = useContext(ListContext);
   const { videos, dispatch: dispatchVideo } = useContext(VideoContext);
 
@@ -58,6 +56,14 @@ export default function NewList() {
             />
           </div>
           <div className="addProductItem">
+            <label>Type</label>
+            <select name="type" onChange={handleChange}>
+              <option value="oneshots">Oneshots</option>
+              <option value="series">Series</option>
+              <option value="cats">Cats</option>
+            </select>
+          </div>
+          <div className="addProductItem">
             <label>Genre</label>
             <select name="genre" onChange={handleChange}>
               <option value="other">Other</option>
@@ -67,14 +73,6 @@ export default function NewList() {
               <option value="cypher">Cypher System</option>
               <option value="cthulhi">Call of Cthulhu</option>
               <option value="starwars">Star Wars</option>
-            </select>
-          </div>
-          <div className="addProductItem">
-            <label>Type</label>
-            <select name="type" onChange={handleChange}>
-              <option value="oneshots">Oneshots</option>
-              <option value="series">Series</option>
-              <option value="cats">Cats</option>
             </select>
           </div>
         </div>
