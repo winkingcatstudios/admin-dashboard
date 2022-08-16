@@ -66,7 +66,7 @@ export default function ListList() {
         rows={lists}
         columns={columns}
         pageSize={12}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[12]}
         checkboxSelection
       />
     </div>

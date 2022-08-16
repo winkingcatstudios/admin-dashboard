@@ -44,9 +44,6 @@ const VideoReducer = (state, action) => {
       };
     case "UPDATE_VIDEO_SUCCESS":
       return {
-        // videos: state.videos.map(
-        //   (video) => video._id === action.payload._id && action.payload
-        // ),
         videos: [...state.videos, action.payload],
         isFetching: false,
         error: false,

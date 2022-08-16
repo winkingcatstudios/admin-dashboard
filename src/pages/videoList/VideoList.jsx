@@ -80,7 +80,7 @@ export default function VideoList() {
         rows={videos}
         columns={columns}
         pageSize={12}
-        rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[12]}
         checkboxSelection
       />
     </div>

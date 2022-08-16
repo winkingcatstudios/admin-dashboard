@@ -1,13 +1,16 @@
 import React from "react";
 import { Visibility } from "@material-ui/icons";
-
-import "./widgetSm.css";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
+import "./widgetSm.css";
+
 export default function WidgetSm() {
   const [newUsers, setNewUsers] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getNewUsers = async () => {
@@ -31,22 +34,23 @@ export default function WidgetSm() {
 
   return (
     <div className="widgetSm">
-      <span className="widgetSmTitle">Newly Joined Members</span>
+      <span className="widgetSmTitle">Newly Created Users</span>
       <ul className="widgetSmList">
         {newUsers.map((user) => (
-          <li className="widgetSmallListItem">
-            <img
-              src={
-                user.profilePic ||
-                "https://upload.wikimedia.org/wikipedia/en/6/62/Kermit_the_Frog.jpg"
-              }
-              alt=""
-              className="widgetSmImg"
-            />
+          <li className="widgetSmallListItem" key={user.id}>
+            <div className="widgetSmUser">
+              <span className="widgetSmUsername">{user.createdAt}</span>
+            </div>
             <div className="widgetSmUser">
               <span className="widgetSmUsername">{user.name}</span>
             </div>
-            <button className="widgetSmButton">
+            <button onClick={() =>
+                navigate("/users/" + user.id, {
+                  state: { user: user },
+                })
+              }
+              className="widgetSmButton"
+            >
               <Visibility className="widgetSmIcon" />
               Display
             </button>

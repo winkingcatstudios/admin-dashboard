@@ -11,10 +11,10 @@ export default function Topbar() {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">Admin Console</span>
+          <span className="logo">Dice Cats Admin Console</span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
+          {/* <div className="topbarIconContainer">
             <NotificationsNone />
             <span className="topIconBadge">2</span>
           </div>
@@ -26,7 +26,7 @@ export default function Topbar() {
             src="https://whatsondisneyplus.com/wp-content/uploads/2020/12/the-Ghost-of-Christmas-Present-1024x559.jpg"
             alt=""
             className="topAvatar"
-          />
+          /> */}
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">

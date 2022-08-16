@@ -35,7 +35,7 @@ export default function Video() {
   const thisYear = new Date().getFullYear();
   let YEAR_SELECTS = [];
   for (var i = thisYear; i >= 1974; i--) {
-    YEAR_SELECTS.push(<option value={i}>{i}</option>);
+    YEAR_SELECTS.push(<option key={i} value={i}>{i}</option>);
   }
 
   const { dispatch } = useContext(VideoContext);

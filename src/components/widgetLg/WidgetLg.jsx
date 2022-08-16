@@ -9,8 +9,8 @@ export default function WidgetLg() {
 
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Unused (Transaction)</h3>
-      <table className="widgetLgTable">
+      <h3 className="widgetLgTitle">Unused Widget Space</h3>
+      {/* <table className="widgetLgTable">
         <tbody>
           <tr className="widgetLgTr">
             <th className="widgetLgTh">Customer</th>
@@ -79,7 +79,7 @@ export default function WidgetLg() {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
   );
 }

@@ -105,10 +105,10 @@ export default function List() {
             </div>
             <div className="productInfoVideoList">
               {videoNames.map((videoName) => (
-                <>
+                <React.Fragment key={videoName}>
                   <span className="productInfoVideos">{videoName}</span>
                   <span className="productInfoVideos"> {" | "}</span>
-                </>
+                </ React.Fragment>
               ))}
             </div>
           </div>
