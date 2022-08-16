@@ -9,6 +9,9 @@ import {
   getVideosFailure,
   getVideosStart,
   getVideosSuccess,
+  updateVideoStart,
+  updateVideoSuccess,
+  updateVideoFailure
 } from "./VideoActions";
 
 export const getVideos = async (dispatch) => {
@@ -41,6 +44,24 @@ export const createVideo = async (video, dispatch) => {
     getVideos(dispatch);
   } catch (err) {
     dispatch(createVideoFailure());
+  }
+};
+
+//update
+export const updateVideo = async (id, list, dispatch) => {
+  dispatch(updateVideoStart());
+  try {
+    const res = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/videos/`  + id, list, {
+      headers: {
+        Authorization:
+          "Bearer " + JSON.parse(localStorage.getItem("userData")).token,
+        "content-Type": "application/json",
+      },
+    });
+    dispatch(updateVideoSuccess(res.data));
+    getVideos(dispatch);
+  } catch (err) {
+    dispatch(updateVideoFailure());
   }
 };
 

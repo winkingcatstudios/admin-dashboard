@@ -121,7 +121,7 @@ export default function List() {
               <label>Title</label>
               <input
                 type="text"
-                placeholder="List Title"
+                placeholder={list.title}
                 name="title"
                 onChange={handleChange}
               />

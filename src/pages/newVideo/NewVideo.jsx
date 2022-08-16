@@ -143,6 +143,14 @@ export default function NewVideo() {
           />
         </div>
         <div className="addProductItem">
+          <label>Type</label>
+          <select name="type" id="type" onChange={handleChange}>
+            <option value="oneshots">Oneshot</option>
+            <option value="series">Series</option>
+            <option value="cats">Cats</option>
+          </select>
+        </div>
+        <div className="addProductItem">
           <label>Genre</label>
           <select name="genre" onChange={handleChange}>
             <option value="other">Other</option>
@@ -158,7 +166,6 @@ export default function NewVideo() {
           <label>Year</label>
           <select name="year" onChange={handleChange}>
             {YEAR_SELECTS}
-            {/* <option value="1974">1974</option> */}
           </select>
         </div>
         <div className="addProductItem">
@@ -168,14 +175,6 @@ export default function NewVideo() {
             <option value="7">7</option>
             <option value="13">13</option>
             <option value="18">18</option>
-          </select>
-        </div>
-        <div className="addProductItem">
-          <label>Type</label>
-          <select name="type" id="type" onChange={handleChange}>
-            <option value="oneshots">Oneshot</option>
-            <option value="series">Series</option>
-            <option value="cats">Cats</option>
           </select>
         </div>
         <div
